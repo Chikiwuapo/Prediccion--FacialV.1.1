@@ -116,11 +116,172 @@
   background: var(--pm-bg-soft);
 }
 
+/* Botones Gestionar - Adaptación para tema claro y oscuro */
+.profile-modal .pm-table .btn-gestionar {
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  color: #ffffff;
+  border: 1px solid rgba(0, 123, 255, 0.3);
+  box-shadow: 0 2px 6px rgba(0, 123, 255, 0.25);
+  transition: all 0.2s ease;
+  font-weight: 600;
+}
+
+.profile-modal .pm-table .btn-gestionar:hover {
+  background: linear-gradient(135deg, #0056b3, #004085);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.35);
+  border-color: rgba(0, 123, 255, 0.5);
+}
+
+.profile-modal .pm-table .btn-gestionar:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(0, 123, 255, 0.25);
+}
+
+/* Botones Eliminar - Adaptación para tema claro y oscuro */
+.profile-modal .pm-table .btn-eliminar {
+  background: linear-gradient(135deg, #dc3545, #b02a37);
+  color: #ffffff;
+  border: 1px solid rgba(220, 53, 69, 0.3);
+  box-shadow: 0 2px 6px rgba(220, 53, 69, 0.25);
+  transition: all 0.2s ease;
+  font-weight: 600;
+}
+
+.profile-modal .pm-table .btn-eliminar:hover {
+  background: linear-gradient(135deg, #b02a37, #8b1e2b);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(220, 53, 69, 0.35);
+  border-color: rgba(220, 53, 69, 0.5);
+}
+
+.profile-modal .pm-table .btn-eliminar:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(220, 53, 69, 0.25);
+}
+
+/* Botones Editar - Adaptación para tema claro y oscuro */
+.profile-modal .pm-table .btn-editar {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: #ffffff;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  box-shadow: 0 2px 6px rgba(245, 158, 11, 0.25);
+  transition: all 0.2s ease;
+  font-weight: 600;
+}
+
+.profile-modal .pm-table .btn-editar:hover {
+  background: linear-gradient(135deg, #d97706, #b45309);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.35);
+  border-color: rgba(245, 158, 11, 0.5);
+}
+
+.profile-modal .pm-table .btn-editar:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(245, 158, 11, 0.25);
+}
+
+/* Botones de confirmación de eliminación */
+.profile-modal .btn-confirm-delete {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: #ffffff;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  box-shadow: 0 2px 6px rgba(245, 158, 11, 0.25);
+  transition: all 0.2s ease;
+  font-weight: 600;
+}
+
+.profile-modal .btn-confirm-delete:hover {
+  background: linear-gradient(135deg, #d97706, #b45309);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.35);
+  border-color: rgba(245, 158, 11, 0.5);
+}
+
+.profile-modal .btn-cancel-delete {
+  background: linear-gradient(135deg, #6b7280, #4b5563);
+  color: #ffffff;
+  border: 1px solid rgba(107, 114, 128, 0.3);
+  box-shadow: 0 2px 6px rgba(107, 114, 128, 0.25);
+  transition: all 0.2s ease;
+  font-weight: 600;
+}
+
+.profile-modal .btn-cancel-delete:hover {
+  background: linear-gradient(135deg, #4b5563, #374151);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(107, 114, 128, 0.35);
+  border-color: rgba(107, 114, 128, 0.5);
+}
+
 /* Permissions modal */
 .profile-modal .pm-perms {
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(8px);
   border: 1px solid var(--pm-border);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* Modal de permisos - Tema claro */
+.profile-modal .pm-perms h5 {
+  color: #1e293b;
+  font-weight: 700;
+}
+
+.profile-modal .pm-perms .text-slate-600 {
+  color: #475569;
+}
+
+.profile-modal .pm-perms .text-slate-800 {
+  color: #1e293b;
+}
+
+.profile-modal .pm-perms .text-slate-100 {
+  color: #f1f5f9;
+}
+
+.profile-modal .pm-perms .text-slate-300 {
+  color: #cbd5e1;
+}
+
+/* Botones del modal de permisos */
+.profile-modal .pm-perms button {
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.profile-modal .pm-perms .bg-sky-600 {
+  background: linear-gradient(135deg, #0ea5e9, #0284c7);
+  border: 1px solid rgba(14, 165, 233, 0.3);
+  box-shadow: 0 2px 6px rgba(14, 165, 233, 0.25);
+}
+
+.profile-modal .pm-perms .bg-sky-600:hover {
+  background: linear-gradient(135deg, #0284c7, #0369a1);
+  box-shadow: 0 4px 12px rgba(14, 165, 233, 0.35);
+}
+
+.profile-modal .pm-perms .bg-emerald-600 {
+  background: linear-gradient(135deg, #059669, #047857);
+  border: 1px solid rgba(5, 150, 105, 0.3);
+  box-shadow: 0 2px 6px rgba(5, 150, 105, 0.25);
+}
+
+.profile-modal .pm-perms .bg-emerald-600:hover {
+  background: linear-gradient(135deg, #047857, #065f46);
+  box-shadow: 0 4px 12px rgba(5, 150, 105, 0.35);
+}
+
+.profile-modal .pm-perms .bg-gray-600 {
+  background: linear-gradient(135deg, #4b5563, #374151);
+  border: 1px solid rgba(75, 85, 99, 0.3);
+  box-shadow: 0 2px 6px rgba(75, 85, 99, 0.25);
+}
+
+.profile-modal .pm-perms .bg-gray-600:hover {
+  background: linear-gradient(135deg, #374151, #1f2937);
+  box-shadow: 0 4px 12px rgba(75, 85, 99, 0.35);
 }
 
 /* Inputs inside profile modal */
@@ -168,4 +329,335 @@
 [data-theme='dark'] .profile-modal textarea {
   background: #ffffff !important;
   color: #0b0b0b !important;
+}
+
+/* Dark mode: Asegurar que todo el texto sea blanco */
+[data-theme='dark'] .profile-modal,
+[data-theme='dark'] .profile-modal * {
+  color: #ffffff;
+}
+
+/* Dark mode: Excepciones para inputs y elementos que deben mantener contraste */
+[data-theme='dark'] .profile-modal input[type="text"],
+[data-theme='dark'] .profile-modal input[type="email"],
+[data-theme='dark'] .profile-modal input[type="number"],
+[data-theme='dark'] .profile-modal select,
+[data-theme='dark'] .profile-modal textarea,
+[data-theme='dark'] .profile-modal button {
+  color: inherit; /* Mantener color del botón */
+}
+
+/* Dark mode: Botones específicos */
+[data-theme='dark'] .profile-modal button.bg-sky-600,
+[data-theme='dark'] .profile-modal button.bg-emerald-600,
+[data-theme='dark'] .profile-modal button.bg-rose-600,
+[data-theme='dark'] .profile-modal button.bg-amber-600 {
+  color: #ffffff;
+}
+
+/* Responsive table para evitar scroll horizontal */
+@media (max-width: 768px) {
+  .profile-modal .pm-table {
+    max-height: 350px;
+  }
+  
+  .profile-modal .pm-table th,
+  .profile-modal .pm-table td {
+    padding: 4px 2px;
+    font-size: 0.75rem;
+  }
+  
+  .profile-modal .pm-table .action-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  
+  .profile-modal .pm-table .action-buttons button {
+    padding: 2px 4px;
+    font-size: 0.7rem;
+  }
+}
+
+/* Optimizaciones adicionales para el área de gestión de usuarios */
+.profile-modal .pm-table {
+  /* Asegurar que la tabla se ajuste al contenedor */
+  table-layout: fixed;
+  width: 100%;
+  background: var(--pm-bg);
+  border: 1px solid var(--pm-border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.profile-modal .pm-table th,
+.profile-modal .pm-table td {
+  /* Evitar que el contenido se desborde */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 12px 16px;
+}
+
+/* Mejorar la apariencia de la tabla en tema claro */
+.profile-modal .pm-table thead th {
+  background: linear-gradient(135deg, #f8fbff, #f2f8ff);
+  color: var(--pm-text);
+  font-weight: 700;
+  border-bottom: 2px solid var(--pm-border);
+}
+
+.profile-modal .pm-table tbody tr {
+  border-bottom: 1px solid var(--pm-border);
+}
+
+.profile-modal .pm-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.profile-modal .pm-table tbody tr:hover {
+  background: linear-gradient(135deg, #f8fbff, #f2f8ff);
+}
+
+/* Mejorar la visibilidad de los badges de rol */
+.profile-modal .pm-table .role-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 60px;
+  height: 24px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 12px;
+  text-transform: capitalize;
+}
+
+/* Estilos específicos para modo oscuro en la tabla */
+[data-theme='dark'] .profile-modal .pm-table {
+  background: rgba(15, 23, 42, 0.9);
+  border-color: rgba(148, 163, 184, 0.3);
+}
+
+[data-theme='dark'] .profile-modal .pm-table thead th {
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.95), rgba(51, 65, 85, 0.8));
+  color: #ffffff;
+  border-bottom-color: rgba(148, 163, 184, 0.3);
+}
+
+[data-theme='dark'] .profile-modal .pm-table tbody tr {
+  border-color: rgba(148, 163, 184, 0.2);
+}
+
+[data-theme='dark'] .profile-modal .pm-table tbody tr:hover {
+  background: linear-gradient(135deg, rgba(51, 65, 85, 0.5), rgba(71, 85, 105, 0.4));
+}
+
+/* Botones Gestionar en modo oscuro - Mantener contraste y visibilidad */
+[data-theme='dark'] .profile-modal .pm-table .btn-gestionar {
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  color: #ffffff;
+  border: 1px solid rgba(0, 123, 255, 0.4);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(0, 123, 255, 0.2);
+}
+
+[data-theme='dark'] .profile-modal .pm-table .btn-gestionar:hover {
+  background: linear-gradient(135deg, #0056b3, #004085);
+  border-color: rgba(0, 123, 255, 0.6);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(0, 123, 255, 0.3);
+  transform: translateY(-1px);
+}
+
+/* Botones Eliminar en modo oscuro */
+[data-theme='dark'] .profile-modal .pm-table .btn-eliminar {
+  background: linear-gradient(135deg, #dc3545, #b02a37);
+  color: #ffffff;
+  border: 1px solid rgba(220, 53, 69, 0.4);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(220, 53, 69, 0.2);
+}
+
+[data-theme='dark'] .profile-modal .pm-table .btn-eliminar:hover {
+  background: linear-gradient(135deg, #b02a37, #8b1e2b);
+  border-color: rgba(220, 53, 69, 0.6);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(220, 53, 69, 0.3);
+  transform: translateY(-1px);
+}
+
+/* Botones Editar en modo oscuro */
+[data-theme='dark'] .profile-modal .pm-table .btn-editar {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: #ffffff;
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(245, 158, 11, 0.2);
+}
+
+[data-theme='dark'] .profile-modal .pm-table .btn-editar:hover {
+  background: linear-gradient(135deg, #d97706, #b45309);
+  border-color: rgba(245, 158, 11, 0.6);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(245, 158, 11, 0.3);
+  transform: translateY(-1px);
+}
+
+/* Botones de confirmación de eliminación en modo oscuro */
+[data-theme='dark'] .profile-modal .btn-confirm-delete {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: #ffffff;
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(245, 158, 11, 0.2);
+}
+
+[data-theme='dark'] .profile-modal .btn-confirm-delete:hover {
+  background: linear-gradient(135deg, #d97706, #b45309);
+  border-color: rgba(245, 158, 11, 0.6);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(245, 158, 11, 0.3);
+  transform: translateY(-1px);
+}
+
+[data-theme='dark'] .profile-modal .btn-cancel-delete {
+  background: linear-gradient(135deg, #6b7280, #4b5563);
+  color: #ffffff;
+  border: 1px solid rgba(107, 114, 128, 0.4);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(107, 114, 128, 0.2);
+}
+
+[data-theme='dark'] .profile-modal .btn-cancel-delete:hover {
+  background: linear-gradient(135deg, #4b5563, #374151);
+  border-color: rgba(107, 114, 128, 0.6);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(107, 114, 128, 0.3);
+  transform: translateY(-1px);
+}
+
+/* Modal de permisos en modo oscuro */
+[data-theme='dark'] .profile-modal .pm-perms {
+  background: rgba(15, 23, 42, 0.95);
+  border-color: rgba(148, 163, 184, 0.3);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme='dark'] .profile-modal .pm-perms h5 {
+  color: #f1f5f9;
+}
+
+[data-theme='dark'] .profile-modal .pm-perms .text-slate-600 {
+  color: #cbd5e1;
+}
+
+[data-theme='dark'] .profile-modal .pm-perms .text-slate-800 {
+  color: #f1f5f9;
+}
+
+[data-theme='dark'] .profile-modal .pm-perms .text-slate-100 {
+  color: #f1f5f9;
+}
+
+[data-theme='dark'] .profile-modal .pm-perms .text-slate-300 {
+  color: #cbd5e1;
+}
+
+/* Botones del modal de permisos en modo oscuro */
+[data-theme='dark'] .profile-modal .pm-perms .bg-sky-600 {
+  background: linear-gradient(135deg, #0ea5e9, #0284c7);
+  border: 1px solid rgba(14, 165, 233, 0.4);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(14, 165, 233, 0.2);
+}
+
+[data-theme='dark'] .profile-modal .pm-perms .bg-sky-600:hover {
+  background: linear-gradient(135deg, #0284c7, #0369a1);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(14, 165, 233, 0.3);
+}
+
+[data-theme='dark'] .profile-modal .pm-perms .bg-emerald-600 {
+  background: linear-gradient(135deg, #059669, #047857);
+  border: 1px solid rgba(5, 150, 105, 0.4);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(5, 150, 105, 0.2);
+}
+
+[data-theme='dark'] .profile-modal .pm-perms .bg-emerald-600:hover {
+  background: linear-gradient(135deg, #047857, #065f46);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(5, 150, 105, 0.3);
+}
+
+[data-theme='dark'] .profile-modal .pm-perms .bg-gray-600 {
+  background: linear-gradient(135deg, #4b5563, #374151);
+  border: 1px solid rgba(75, 85, 99, 0.4);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(75, 85, 99, 0.2);
+}
+
+[data-theme='dark'] .profile-modal .pm-perms .bg-gray-600:hover {
+  background: linear-gradient(135deg, #374151, #1f2937);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(75, 85, 99, 0.3);
+}
+
+/* Mejorar contraste en modo oscuro para botones de acción */
+[data-theme='dark'] .profile-modal .pm-table button {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme='dark'] .profile-modal .pm-table button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+/* Transiciones suaves para mejor UX */
+.profile-modal .pm-table button,
+.profile-modal .pm-table tr {
+  transition: all 0.2s ease-in-out;
+}
+
+/* Asegurar que el modal de confirmación sea visible en modo oscuro */
+[data-theme='dark'] .profile-modal .pm-card.bg-amber-50 {
+  background: rgba(120, 53, 15, 0.2) !important;
+  border-color: rgba(217, 119, 6, 0.4) !important;
+}
+
+[data-theme='dark'] .profile-modal .pm-card.bg-amber-50 h5 {
+  color: #fbbf24 !important;
+}
+
+[data-theme='dark'] .profile-modal .pm-card.bg-amber-50 p {
+  color: #fcd34d !important;
+}
+
+[data-theme='dark'] .profile-modal .pm-card.bg-amber-50 b {
+  color: #fef3c7 !important;
+}
+
+/* Mejorar contraste en modal de confirmación de eliminación - Modo claro */
+.profile-modal .pm-card.bg-amber-50 h5 {
+  color: #92400e !important; /* amber-800 más oscuro para mejor contraste */
+  font-weight: 700;
+}
+
+.profile-modal .pm-card.bg-amber-50 p {
+  color: #b45309 !important; /* amber-700 más oscuro para mejor contraste */
+  font-weight: 600;
+}
+
+.profile-modal .pm-card.bg-amber-50 b {
+  color: #78350f !important; /* amber-900 para máximo contraste del nombre de usuario */
+  font-weight: 700;
+}
+
+/* Botón cerrar en modal de permisos - Asegurar texto blanco en ambos modos */
+.profile-modal .pm-perms .bg-gray-600 {
+  color: #ffffff !important;
+  background: linear-gradient(135deg, #4b5563, #374151) !important;
+  border: 1px solid rgba(75, 85, 99, 0.3) !important;
+  font-weight: 600 !important;
+}
+
+.profile-modal .pm-perms .bg-gray-600:hover {
+  background: linear-gradient(135deg, #374151, #1f2937) !important;
+  color: #ffffff !important;
+}
+
+/* Modo oscuro - Botón cerrar en modal de permisos */
+[data-theme='dark'] .profile-modal .pm-perms .bg-gray-600 {
+  color: #ffffff !important;
+  background: linear-gradient(135deg, #4b5563, #374151) !important;
+  border: 1px solid rgba(75, 85, 99, 0.4) !important;
+}
+
+[data-theme='dark'] .profile-modal .pm-perms .bg-gray-600:hover {
+  background: linear-gradient(135deg, #374151, #1f2937) !important;
+  color: #ffffff !important;
 }

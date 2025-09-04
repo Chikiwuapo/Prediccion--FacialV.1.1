@@ -92,6 +92,7 @@ Frontend (React/TS)
 1️⃣ Backend de sismos (Django)
 ```bash
 pip install -r Backend/requirements.txt
+python manage.py migrate
 python Backend/manage.py runserver 0.0.0.0:8000
 ```
 

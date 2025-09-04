@@ -516,7 +516,7 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose, user, onLo
         </div>
       )}
 
-      <div className={`${activeTab === 'perfil' || activeTab === 'usuarios' ? 'grid grid-cols-1' : 'grid grid-cols-1 md:grid-cols-2'} gap-6 py-4 px-2 md:px-4`}>
+      <div className={`${activeTab === 'perfil' ? 'grid grid-cols-1' : activeTab === 'usuarios' ? 'grid grid-cols-1' : 'grid grid-cols-1 md:grid-cols-2'} gap-6 py-4 px-2 md:px-4`}>
         {/* Columna izquierda */}
         <div className="flex flex-col items-center">
           {activeTab === 'rostro' && (isAdmin(currentUser) || isCEO(currentUser)) ? (
@@ -549,19 +549,7 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose, user, onLo
                 </div>
               )}
 
-          {/* Modal Confirmar Eliminación */}
-          {deleteModalOpen && deleteTarget && (
-            <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50">
-              <div className="pm-card w-full max-w-lg bg-white/95 dark:bg-slate-900/90 rounded-xl p-6 shadow-2xl border border-sky-200/70 dark:border-slate-700 backdrop-blur">
-                <h5 className="text-xl mb-2">Eliminar usuario</h5>
-                <p className="text-sm mb-4">¿Seguro que deseas eliminar a <b>{deleteTarget.username}</b>? Esta acción afecta sólo la base de usuarios del reconocimiento facial.</p>
-                <div className="flex justify-end gap-2">
-                  <button className="px-3 py-2 rounded bg-gray-500 hover:bg-gray-600 text-white" onClick={closeDeleteModal}>Cancelar</button>
-                  <button className="px-3 py-2 rounded bg-rose-600 hover:bg-rose-700 text-white" onClick={confirmDelete}>Eliminar</button>
-                </div>
-              </div>
-            </div>
-          )}
+
             </>
           ) : activeTab === 'perfil' ? (
             <div className="pm-card w-full max-w-md mx-auto p-5 rounded-xl border border-sky-200/70 dark:border-slate-700 bg-white/90 dark:bg-slate-900/70 backdrop-blur shadow-md transition-all">
@@ -590,7 +578,7 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose, user, onLo
         </div>
 
         {/* Columna derecha */}
-        <div className="flex flex-col space-y-4">
+        <div className={`flex flex-col space-y-4 ${activeTab === 'usuarios' ? 'w-full' : ''}`}>
           {activeTab === 'rostro' && (isAdmin(currentUser) || isCEO(currentUser)) && (
             <div className="pm-card rounded-xl border border-sky-200/70 bg-white/90 dark:bg-slate-900/60 backdrop-blur p-4 shadow-sm">
               <h4 className="text-lg font-bold text-slate-800 dark:text-slate-100">Registrar/Actualizar rostro</h4>
@@ -691,63 +679,106 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose, user, onLo
           {activeTab === 'perfil' && null}
 
           {activeTab === 'usuarios' && (isAdmin(currentUser) || isCEO(currentUser)) && (
-            <div className="space-y-4 max-w-2xl mx-auto w-full">
-              <div className="flex items-center justify-center">
-                <h4 className="text-lg font-semibold">Gestión de usuarios</h4>
+            <div className="w-full space-y-4">
+              <div className="flex items-center justify-center mb-4">
+                <h4 className="text-xl font-semibold text-slate-800 dark:text-slate-100">Gestión de usuarios</h4>
               </div>
-              {/* Tabla (solo lectura desde user.db). Sin formulario de creación. */}
-              <div className="pm-table overflow-auto border border-sky-200/70 dark:border-slate-700 rounded-md shadow-sm">
-                <table className="min-w-full text-sm">
-                  <thead className="bg-sky-50 dark:bg-slate-800/60">
+              
+              {/* Modal Confirmar Eliminación - Ahora integrado en la sección de usuarios */}
+              {deleteModalOpen && deleteTarget && (
+                <div className="pm-card w-full bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-700/50 rounded-lg p-4 mb-4">
+                  <div className="flex items-start gap-3">
+                    <div className="flex-shrink-0 w-6 h-6 bg-amber-100 dark:bg-amber-800/50 rounded-full flex items-center justify-center">
+                      <span className="text-amber-600 dark:text-amber-400 text-sm font-bold">!</span>
+                    </div>
+                    <div className="flex-1">
+                      <h5 className="text-amber-800 dark:text-amber-200 font-semibold mb-2">Confirmar eliminación</h5>
+                      <p className="text-amber-700 dark:text-amber-300 text-sm mb-3">
+                        ¿Estás seguro de que deseas eliminar al usuario <b className="text-amber-800 dark:text-amber-100">{deleteTarget.username}</b>? 
+                        Esta acción solo afectará la base de datos del reconocimiento facial.
+                      </p>
+                      <div className="flex gap-2">
+                        <button 
+                          className="btn-confirm-delete px-3 py-1.5 rounded text-white text-sm font-medium transition-all"
+                          onClick={confirmDelete}
+                        >
+                          Sí, eliminar
+                        </button>
+                        <button 
+                          className="btn-cancel-delete px-3 py-1.5 rounded text-white text-sm font-medium transition-all"
+                          onClick={closeDeleteModal}
+                        >
+                          Cancelar
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+              
+              {/* Tabla optimizada para evitar scroll */}
+              <div className="pm-table">
+                <table className="w-full text-sm">
+                  <thead>
                     <tr>
-                      <th className="text-left p-2">ID</th>
-                      <th className="text-left p-2">Nombre</th>
-                      <th className="text-left p-2">Correo</th>
-                      <th className="text-left p-2">DNI</th>
-                      <th className="text-left p-2">Rol</th>
-                      <th className="text-left p-2">Permisos avanzados</th>
-                      <th className="text-left p-2">Acciones</th>
+                      <th className="text-left">ID</th>
+                      <th className="text-left">Nombre</th>
+                      <th className="text-left">Correo</th>
+                      <th className="text-left">DNI</th>
+                      <th className="text-left">Rol</th>
+                      <th className="text-left">Permisos</th>
+                      <th className="text-left">Acciones</th>
                     </tr>
                   </thead>
                   <tbody>
                       {usersList.map(u => {
                        const role = getDisplayRole(u);
                        return (
-                         <tr key={u.id} className="border-t border-sky-200/70 dark:border-slate-700">
-                          <td className="p-2">{u.id}</td>
-                          <td className="p-2">
+                         <tr key={u.id}>
+                          <td>{u.id}</td>
+                          <td className="font-medium">
                             {u.username}
                           </td>
-                          <td className="p-2">
+                          <td>
                             {u.email}
                           </td>
-                          <td className="p-2">
+                          <td>
                             {u.dni ?? '—'}
                           </td>
-                          <td className="p-2">{role}</td>
-                          <td className="p-2">
+                          <td>
+                            <span className="px-3 py-1 rounded-full text-xs font-medium bg-sky-100 dark:bg-sky-900/50 text-sky-700 dark:text-sky-300 border border-sky-200 dark:border-sky-700/50">
+                              {role}
+                            </span>
+                          </td>
+                          <td>
                             {(isAdmin(currentUser) || isCEO(currentUser)) ? (
                               <button
-                                className="px-2 py-1 rounded bg-sky-600 text-white hover:bg-sky-700 transition-colors"
+                                className="btn-gestionar px-3 py-1.5 rounded text-xs font-medium transition-all"
                                 onClick={() => openPermModal(u)}
-                              >Gestionar</button>
+                              >
+                                Gestionar
+                              </button>
                             ) : (
                               <span className="text-gray-400">—</span>
                             )}
                           </td>
-                          <td className="p-2 flex gap-2">
+                          <td>
                             {(isAdmin(currentUser) || isCEO(currentUser)) ? (
-                              <>
+                              <div className="action-buttons flex gap-2">
                                 <button
-                                  className="px-2 py-1 rounded bg-amber-600 hover:bg-amber-700 text-white transition-colors"
+                                  className="btn-editar px-3 py-1.5 rounded text-white text-xs font-medium transition-all shadow-sm"
                                   onClick={() => openEditModal(u)}
-                                >Editar</button>
+                                >
+                                  Editar
+                                </button>
                                 <button
-                                  className="px-2 py-1 rounded bg-rose-600 hover:bg-rose-700 text-white transition-colors"
+                                  className="btn-eliminar px-3 py-1.5 rounded text-white text-xs font-medium transition-all shadow-sm"
                                   onClick={() => openDeleteModal(u)}
-                                >Eliminar</button>
-                              </>
-                              ) : (
+                                >
+                                  Eliminar
+                                </button>
+                              </div>
+                            ) : (
                               <span className="text-gray-400">—</span>
                             )}
                           </td>
@@ -766,7 +797,7 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose, user, onLo
               <div className="pm-card pm-perms w-full max-w-md bg-white/95 dark:bg-slate-900/90 rounded-xl p-5 shadow-2xl border border-sky-200/70 dark:border-slate-700 backdrop-blur">
                 <div className="flex items-center justify-between mb-2">
                   <h5 className="font-bold text-lg text-slate-800 dark:text-slate-100">Gestionar permisos</h5>
-                  <button className="text-sm px-2 py-1 rounded bg-slate-200 hover:bg-slate-300 dark:bg-slate-700 dark:hover:bg-slate-600" onClick={closePermModal}>Cerrar</button>
+                  <button className="text-sm px-2 py-1 rounded text-white font-semibold bg-gray-600 hover:bg-gray-700 transition-colors" onClick={closePermModal}>Cerrar</button>
                 </div>
                 <div className="text-sm text-slate-600 dark:text-slate-300 mb-3">
                   Usuario: <b>{permTarget.username}</b> — <span className="ml-1">{permTarget.email}</span>

@@ -273,14 +273,38 @@ const DashboardGrid: React.FC = () => {
     return stats;
   }, [mapData, countries]);
 
-  // Sort countries by current count desc to reflect context
+  // Sort countries by risk level and magnitude (not just count)
   const sortedCountries = useMemo(() => {
     return countries.slice().sort((a, b) => {
+      // Primero ordenar por nivel de riesgo (very-high > high > medium > low)
+      const riskOrder = { 'very-high': 4, 'high': 3, 'medium': 2, 'low': 1 };
+      const riskA = riskOrder[a.riskLevel] || 0;
+      const riskB = riskOrder[b.riskLevel] || 0;
+      
+      if (riskA !== riskB) {
+        return riskB - riskA; // Mayor riesgo primero
+      }
+      
+      // Si tienen el mismo nivel de riesgo, ordenar por magnitud máxima
+      const magA = a.magnitude || 0;
+      const magB = b.magnitude || 0;
+      
+      if (magA !== magB) {
+        return magB - magA; // Mayor magnitud primero
+      }
+      
+      // Si tienen la misma magnitud, ordenar por conteo de eventos
       const ca = countryStats[normalize(a.name)]?.count ?? 0;
       const cb = countryStats[normalize(b.name)]?.count ?? 0;
       return cb - ca;
     });
   }, [countries, countryStats]);
+
+  // Calcular el país con mayor riesgo usando la misma lógica de ordenamiento
+  const highestRiskCountry = useMemo(() => {
+    if (sortedCountries.length === 0) return null;
+    return sortedCountries[0]; // El primer país después del ordenamiento
+  }, [sortedCountries]);
 
   if (loading) {
     return (
@@ -348,8 +372,8 @@ const DashboardGrid: React.FC = () => {
           <div>
             <div className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>País con mayor riesgo</div>
             <div className={`text-xl font-semibold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
-              {dashboardData?.highest_risk_country ? 
-                `${dashboardData.highest_risk_country.country_code} (${dashboardData.highest_risk_country.count} sismos)` : 
+               {highestRiskCountry ? 
+                 `${highestRiskCountry.name} (${countryStats[normalize(highestRiskCountry.name)]?.count || 0} sismos)` : 
                 '—'}
             </div>
             <div className={`text-xs ${theme === 'dark' ? 'text-gray-500' : 'text-gray-500'}`}>Estimado actual</div>
