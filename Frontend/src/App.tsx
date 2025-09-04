@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { Dashboard } from './components/Dashboard';
 import ErrorBoundary from './components/Dashboard/Layout/ErrorBoundary';
 import './styles/index.css';
 import { ThemeProvider } from './context/ThemeContext';
 import FacialLogin from './auth/FacialLogin';
 import { me } from './services/auth';
+import { ChatBot } from './components/ChatBot/ChatBot';
 
 const App: React.FC = () => {
   const [authState, setAuthState] = useState<'checking' | 'authed' | 'guest'>('checking');
@@ -28,9 +29,12 @@ const App: React.FC = () => {
     <ThemeProvider>
       <ErrorBoundary>
         {authState === 'checking' ? (
-          <div style={{display:'flex',alignItems:'center',justifyContent:'center',height:'100vh'}}>Cargando…</div>
+          <div style={{display:'flex',alignItems:'center',justifyContent:'center',height:'100vh'}}>Cargando</div>
         ) : authState === 'authed' ? (
-          <Dashboard />
+          <>
+            <Dashboard />
+            <ChatBot />
+          </>
         ) : (
           <FacialLogin />
         )}
